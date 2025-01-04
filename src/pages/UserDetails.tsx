@@ -33,7 +33,7 @@ function UserDetails() {
   }, [id]);
 
   const handleBack = () => {
-    navigate("/"); 
+    navigate('/');
   };
 
   if (loading) {
@@ -50,7 +50,9 @@ function UserDetails() {
     return (
       <Container>
         <div className="space-y-4">
-          <Title className="text-lg font-medium">{error || 'User Not Found'}</Title>
+          <Title className="text-lg font-medium">
+            {error || 'User Not Found'}
+          </Title>
           <button
             onClick={handleBack}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
@@ -95,13 +97,13 @@ function UserDetails() {
             </a>
           </div>
           <div>
-            <span className="font-medium">Address:</span>{' '}
-            {user.address?.street}, {user.address?.suite}, {user.address?.city},{' '}
+            <span className="font-medium">Address:</span> {user.address?.street}
+            , {user.address?.suite}, {user.address?.city},{' '}
             {user.address?.zipcode}
           </div>
           <div>
-            <span className="font-medium">Company:</span>{' '}
-            {user.company?.name} - {user.company?.catchPhrase}
+            <span className="font-medium">Company:</span> {user.company?.name} -{' '}
+            {user.company?.catchPhrase}
           </div>
         </div>
       </div>

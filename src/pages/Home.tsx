@@ -8,13 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import { fetchUsers } from '../services/api.ts';
 import Spinner from '../assets/icons/Spinner.tsx';
 import { UserProps } from '../types/types.ts';
-import { FaSearch } from "react-icons/fa";
-
-
+import { FaSearch } from 'react-icons/fa';
 
 function Home() {
   const navigate = useNavigate();
-  const [activeLink, setActiveLink] = useState<string>('All'); 
+  const [activeLink, setActiveLink] = useState<string>('All');
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredUsers, setFilteredUsers] = useState<UserProps[]>([]);
@@ -41,7 +39,7 @@ function Home() {
     if (searchQuery.trim() === '') {
       setFilteredUsers(users); // Reset to full user list if search is cleared
     } else {
-      const filtered = users.filter((user:UserProps) =>
+      const filtered = users.filter((user: UserProps) =>
         user.username.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredUsers(filtered);
@@ -49,17 +47,18 @@ function Home() {
   }, [searchQuery, users]);
 
   if (loading) {
-    return  <Container>
-    <div className="flex justify-center items-center h-screen">
-      <Spinner /> 
-    </div>
-  </Container>;
+    return (
+      <Container>
+        <div className="flex justify-center items-center h-screen">
+          <Spinner />
+        </div>
+      </Container>
+    );
   }
 
-  console.log(users)
+  console.log(users);
 
-  const links = ['All', 'Female', 'Male']; 
- 
+  const links = ['All', 'Female', 'Male'];
 
   return (
     <Container>
@@ -79,13 +78,10 @@ function Home() {
               <button
                 key={link}
                 onClick={() => setActiveLink(link)}
-                className={classNames(
-                  'rounded',
-                  {
-                    'bg-purple-600 text-white px-4 py-2': activeLink === link, // Active link styles
-                    'text-gray-800': activeLink !== link, // Inactive link styles
-                  }
-                )}
+                className={classNames('rounded', {
+                  'bg-purple-600 text-white px-4 py-2': activeLink === link, // Active link styles
+                  'text-gray-800': activeLink !== link, // Inactive link styles
+                })}
               >
                 {link}
               </button>
@@ -97,7 +93,9 @@ function Home() {
           {filteredUsers.map((user: UserProps) => (
             <Card key={user.id} className="p-4 border rounded shadow-sm">
               <div className="flex justify-between sm:flex-col items-center">
-                <Title className="text-lg font-medium mb-2">{user.username}</Title>
+                <Title className="text-lg font-medium mb-2">
+                  {user.username}
+                </Title>
                 <button
                   onClick={() => navigate(`/user/${user.id}`)}
                   className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
