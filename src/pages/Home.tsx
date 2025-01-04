@@ -4,7 +4,7 @@ import { Title } from '../components/Text.tsx';
 import TextField from '../components/TextField.tsx';
 import classNames from 'classnames';
 import { Card } from '../components/Card.tsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { fetchUsers } from '../services/api.ts';
 import Spinner from '../assets/icons/Spinner.tsx';
 import { UserProps } from '../types/types.ts';
