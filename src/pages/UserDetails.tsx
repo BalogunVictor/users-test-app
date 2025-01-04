@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router';
 import { Container } from '../components/Container.tsx';
 import { Title } from '../components/Text.tsx';
 import { fetchUser } from '../services/api.ts';
